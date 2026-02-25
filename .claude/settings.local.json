@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:kimtaeyeong1229.github.io)",
+      "WebFetch(domain:taehyeon03.github.io)",
+      "WebFetch(domain:jeongsu-moon.github.io)",
+      "WebFetch(domain:dkfjr.github.io)"
+    ]
+  }
+}

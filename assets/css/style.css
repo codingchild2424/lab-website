@@ -14,7 +14,7 @@ a {
 }
 
 a:hover {
-    color: #000;
+    color: #862633;
     text-decoration: underline;
 }
 
@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-    color: #2d2d2d !important;
+    color: #862633 !important;
 }
 
 .navbar-nav .dropdown-menu {
@@ -104,7 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 .page-header {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #e8e8e8;
+    border-bottom: 2px solid #862633;
 }
 
 .page-header h2 {
@@ -123,7 +123,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.08em;
     color: #2d2d2d;
     padding-bottom: 0.6rem;
-    border-bottom: 2px solid #e8e8e8;
+    border-bottom: 2px solid #862633;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
 }
@@ -184,7 +184,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .member-card:hover {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 10px rgba(134, 38, 51, 0.15);
+    border-color: #862633;
 }
 
 .member-card .member-photo {
@@ -219,7 +220,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .research-card:hover {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 10px rgba(134, 38, 51, 0.15);
+    border-color: #862633;
 }
 
 .research-card h4 {
@@ -261,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.6;
     margin-bottom: 0.8rem;
     padding-left: 1rem;
-    border-left: 2px solid #e8e8e8;
+    border-left: 2px solid #862633;
 }
 
 .pub-item .pub-title {
@@ -289,7 +291,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .course-item:hover {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 10px rgba(134, 38, 51, 0.15);
+    border-color: #862633;
 }
 
 .course-item h5 {
