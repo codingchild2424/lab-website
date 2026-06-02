@@ -55,18 +55,18 @@
 		<!-- News -->
 		<div class="py-3">
 			<h3 class="section-heading">News</h3>
-			<div class="news-list">
+			<div class="news-list" id="home-news">
 				<div class="news-item d-md-flex gap-3">
-					<div class="news-date">2026.03</div>
-					<div class="news-content">LEAP Lab has moved to Korea University Sejong Campus.</div>
+					<div class="news-date">2026.06</div>
+					<div class="news-content">New preprint: <a href="https://www.researchgate.net/publication/405691116_ModelPinch_Diverse_Task_Experts_Are_Dense_Even_in_4_Parameters" target="_blank">"ModelPinch: Diverse Task Experts Are Dense Even in 4 Parameters"</a></div>
 				</div>
 				<div class="news-item d-md-flex gap-3">
-					<div class="news-date">2026.02</div>
-					<div class="news-content">New preprint: <a href="https://arxiv.org/abs/2602.10597" target="_blank">"Llama-Polya: Instruction Tuning for LLM based on Polya's Problem-solving"</a></div>
+					<div class="news-date">2026.05</div>
+					<div class="news-content">New preprint: <a href="https://arxiv.org/abs/2605.27088" target="_blank">"LLMs Are Already Good Tutors: Training-Free Prompt Optimization for Pedagogical Math Tutoring"</a></div>
 				</div>
 				<div class="news-item d-md-flex gap-3">
-					<div class="news-date">2026.02</div>
-					<div class="news-content">New preprint: <a href="https://arxiv.org/abs/2602.10620" target="_blank">"ISD-Agent-Bench: A Comprehensive Benchmark for Evaluating LLM-based Instructional Design Agents"</a></div>
+					<div class="news-date">2026.05</div>
+					<div class="news-content">New preprint: <a href="https://arxiv.org/abs/2605.26918" target="_blank">"EduVideoBench: A Knowledge-Skills-Attitude Benchmark for Educational Video Generation"</a></div>
 				</div>
 			</div>
 			<div class="text-end mt-2">
@@ -140,5 +140,21 @@
 	</footer>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Pull latest news from news.html so the homepage stays in sync (fallback markup above shows if this fails). -->
+	<script>
+		fetch('news.html')
+			.then(function (res) { return res.text(); })
+			.then(function (html) {
+				var doc = new DOMParser().parseFromString(html, 'text/html');
+				var items = doc.querySelectorAll('.news-item');
+				var container = document.getElementById('home-news');
+				if (!items.length || !container) return;
+				container.innerHTML = '';
+				Array.prototype.slice.call(items, 0, 3).forEach(function (item) {
+					container.appendChild(item);
+				});
+			})
+			.catch(function () { /* keep fallback markup */ });
+	</script>
 </body>
 </html>
