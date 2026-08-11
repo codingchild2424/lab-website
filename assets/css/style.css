@@ -380,3 +380,24 @@ hr {
         margin-top: 0.2rem;
     }
 }
+
+/* ======= Project entries: 우측 지원기관 마크 + 불렛 메타 ======= */
+.research-card.proj { display: flex; gap: 1.25rem; align-items: flex-start; }
+.proj-body { flex: 1 1 auto; min-width: 0; }
+.proj-mark { flex: 0 0 130px; text-align: right; padding-top: 0.2rem; }
+.proj-mark img { max-width: 130px; max-height: 44px; object-fit: contain; }
+.proj-mark img { display: block; margin-left: auto; }
+.proj-mark img + img { margin-top: 0.5rem; }
+.proj-mark .mark-text { font-size: 0.8rem; color: #999; }
+ul.proj-meta { margin: 0.4rem 0 0; padding-left: 1.15rem; font-size: 0.88rem; color: #888; }
+ul.proj-meta li { margin-bottom: 0.1rem; }
+
+@media (max-width: 767px) {
+    .research-card.proj { flex-direction: column; gap: 0.5rem; }
+    .proj-mark { flex: none; text-align: left; }
+}
+
+/* ======= Photo items ======= */
+.photo-item { margin: 0 0 1rem; }
+.photo-item img { width: 100%; height: auto; display: block; border: 1px solid #e0e0e0; }
+.photo-item figcaption { font-size: 0.82rem; color: #888; margin-top: 0.4rem; }

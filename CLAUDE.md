@@ -27,11 +27,14 @@ GitHub Pages가 `main` 브랜치를 그대로 서빙한다.
 논문 1건이 추가되면 **아래를 모두** 갱신해야 일관성이 유지된다.
 과거에 `materials/portfolio/index.html`이 누락되어 여러 건이 밀린 적이 있으니 주의.
 
-1. `publication.html` — 해당 연도 섹션 **맨 위**에 추가
-2. `news.html` — 해당 연도 `news-list` **맨 위**에 추가
-3. `index.html` — 아래 "홈 News 동기화" 참고
-4. `materials/portfolio/index.html` — Publications의 해당 연도 블록 맨 위에 추가
-5. (선택) `research.html` — 연구 주제의 대표 논문을 교체할 가치가 있으면
+1. `publication.html` - 해당 연도 섹션 **맨 위**에 추가
+2. `news.html` - 해당 연도 `news-list` **맨 위**에 추가
+3. `index.html` - 아래 "홈 News 동기화" 참고
+4. `materials/portfolio/index.html` - Publications의 해당 연도 블록 맨 위에 추가
+5. (선택) `research.html` - 연구 주제의 대표 논문을 교체할 가치가 있으면
+
+`project.html`의 섹션은 **Ongoing Projects / Completed Projects** 두 가지다.
+아직 시작하지 않은 과제만 별도 표기하며, 수행 중인 과제는 Ongoing에 둔다.
 
 ### 홈 News 동기화
 
@@ -53,6 +56,51 @@ GitHub Pages가 `main` 브랜치를 그대로 서빙한다.
 - News 문구: 프리프린트는 `New preprint: "제목"`, 학회 억셉은 `Paper accepted at CIKM 2026: "제목"`.
 - 날짜 형식은 `2026.08` (연.월).
 - 들여쓰기는 **탭**. 기존 파일의 탭 깊이를 그대로 맞출 것.
+
+### 대시 표기 (중요)
+
+- **em dash(`—`, `&mdash;`)와 en dash(`–`, `&ndash;`)를 쓰지 않는다.**
+  구분자가 필요하면 일반 하이픈 `-` 하나만 쓴다.
+- 이 규칙은 HTML 본문, 커밋 메시지, 문서 전부에 적용된다.
+- 사용자와의 대화에서도 마찬가지로 `-`만 쓴다.
+- 확인: `grep -rn '&mdash;\|&ndash;\|—\|–' . --include='*.html' --include='*.md'` 결과가 비어야 한다.
+- 가운뎃점 `&middot;`는 항목 구분자로 계속 써도 된다 (대시가 아님).
+
+## Project 페이지 규칙
+
+- 제목 형식: `(기간) 과제명 (금액)` - 기간과 금액을 모두 제목 괄호에 넣는다.
+  - 예: `(2026.07 - 2029.06) Basic Research Laboratory: ... (KRW 375,000,000 of KRW 1,500,000,000)`
+  - 기간을 연도만 아는 경우 `(2026)`.
+- 정렬은 **시작일 내림차순**. 섹션은 Ongoing / Completed.
+- 회색 태그 박스(`research-tag`)를 쓰지 않는다. 부가 정보는 `<ul class="proj-meta">` 불렛으로.
+- 불렛에는 **우측 로고와 중복되는 지원기관명을 넣지 않는다.** 파트너 기관, 지분, 총액 같은 추가 정보만.
+- 카드 구조는 `<div class="research-card proj">` > `.proj-body` + `.proj-mark`.
+- 페이지 상단에 `Funding in <올해>` 와 `Cumulative` 두 금액을 함께 적는다.
+
+### 공동과제 금액 처리
+
+여러 PI가 함께 수행하는 과제는 **총액과 본 연구실 지분을 모두 표기**하고,
+상단 누적/올해 합계에는 **지분만** 더한다.
+예) NRF 기초연구실: 총 15억(연 5억), 4인 공동이므로 지분 3.75억(연 1.25억) -> 누적에는 3.75억 반영.
+
+## 로고 (assets/images/logos/)
+
+- 각 과제 우측 `.proj-mark`에는 **텍스트가 아니라 이미지**를 넣는다.
+- 자금 출처뿐 아니라 **협력 기관 로고도 함께** 넣는다 (여러 장이면 세로로 쌓임).
+- 해당 기관 로고가 없으면 고려대 마크로 대체한다.
+- **자유 라이선스(Public domain / CC)나 기관 공식 배포 파일만** 쓴다. Wikimedia Commons를 먼저 확인.
+- 흰 배경에서 보이는 버전을 쓸 것. 흰색 단색 로고(fill 전부 #FFFFFF)는 흰 바탕에서 안 보인다.
+- 가로로 긴 로고는 `max-width: 130px`에서 읽을 수 없게 되니 마크/심볼 버전을 우선한다.
+- 봇 차단(Cloudflare 등)이 걸린 사이트는 우회하지 않는다. 사용자에게 파일을 요청할 것.
+
+## 사진 (assets/images/photos/)
+
+- EXIF로 촬영일시를 확인해 캡션 날짜를 채운다 (파일 수정일 말고).
+- 긴 변 1200px로 리사이즈, JPEG quality 85로 저장.
+- 마크업은 `<figure class="photo-item">` + `<img>` + `<figcaption>`.
+- 캡션 형식: `설명, YYYY.MM`.
+- **게시 전 반드시 사진을 직접 확인한다.** 여러 장이면 PIL로 컨택트시트를 만들어 한 번에 본다.
+- 사진 속 인물을 추측해 이름을 붙이지 않는다.
 
 ## 인증 정보
 
