@@ -83,6 +83,21 @@ GitHub Pages가 `main` 브랜치를 그대로 서빙한다.
 상단 누적/올해 합계에는 **지분만** 더한다.
 예) NRF 기초연구실: 총 15억(연 5억), 4인 공동이므로 지분 3.75억(연 1.25억) -> 누적에는 3.75억 반영.
 
+## 논문 figure (assets/images/figures/)
+
+Publications의 각 항목에는 `.pub-figure` 썸네일이 붙는다. 파일명은 `<arXiv ID>.png`.
+
+**OCR을 쓰지 말 것.** OpenRouter에는 Upstage Solar LLM만 있고 OCR/document-parse 모델이 없다.
+arXiv 소스 압축본에 원본 그림 파일이 그대로 들어 있으므로 그쪽에서 꺼낸다.
+
+1. `https://arxiv.org/e-print/<ID>` 로 tarball 다운로드 후 해제
+2. `\documentclass`가 있는 가장 큰 `.tex`를 메인으로 보고, 첫 `\includegraphics{...}` 경로를 해석
+3. PDF면 `pdftoppm -png -r 110 -f 1 -l 1`로 렌더, 래스터면 그대로 사용
+4. 긴 변 520px로 리사이즈해 저장
+
+`main_figure.pdf`, `main_fig_v4.pdf` 같은 파일명이 잡히면 대체로 정확하다.
+일부 논문은 소스가 없거나(ReadError) 그림이 없어 실패하는데, 그 항목은 썸네일 없이 두면 된다.
+
 ## 로고 (assets/images/logos/)
 
 - 각 과제 우측 `.proj-mark`에는 **텍스트가 아니라 이미지**를 넣는다.
