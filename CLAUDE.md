@@ -33,6 +33,12 @@ GitHub Pages가 `main` 브랜치를 그대로 서빙한다.
 4. `materials/portfolio/index.html` - Publications의 해당 연도 블록 맨 위에 추가
 5. (선택) `research.html` - 연구 주제의 대표 논문을 교체할 가치가 있으면
 
+### 억셉 논문 표기
+
+- 학회·저널에 억셉된 논문은 프리프린트보다 **위**에 둔다 (해당 연도 목록 최상단).
+- News의 억셉 항목은 `<b>...</b>`로 감싸 프리프린트와 구분한다.
+- 문구는 `Paper accepted at <학회> <연도>: "제목"`.
+
 `project.html`의 섹션은 **Ongoing Projects / Completed Projects** 두 가지다.
 아직 시작하지 않은 과제만 별도 표기하며, 수행 중인 과제는 Ongoing에 둔다.
 
